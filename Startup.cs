@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using RedHookCraftWebsite.Models;
+using RedHookCraftWebsite.Services;
 
 namespace RedHookCraftWebsite
 {
@@ -23,6 +26,10 @@ namespace RedHookCraftWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DatabaseConnector>(Configuration.GetSection("DatabaseConnector"));
+            services.AddScoped<ProductService>();
+            services.AddControllers();
+
             services.AddRazorPages();
         }
 
@@ -49,6 +56,7 @@ namespace RedHookCraftWebsite
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
         }
