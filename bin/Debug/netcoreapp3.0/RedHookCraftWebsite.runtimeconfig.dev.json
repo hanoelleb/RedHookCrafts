@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\hanoe\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\hanoe\\.nuget\\packages"
+    ]
+  }
+}
